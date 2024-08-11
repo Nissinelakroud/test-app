@@ -1,22 +1,54 @@
-<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-    <p>
-        <mat-form-field appearance="outline">
-          <mat-label>Prénom</mat-label>
-          <input matInput placeholder="Prénom" formControlName="firstName">
-        </mat-form-field>
-    </p>
-    <p>
-        <mat-form-field appearance="outline">
-          <mat-label>Nom</mat-label>
-          <input matInput placeholder="Nom" formControlName="lastName">
-        </mat-form-field>
-    </p>
-    <p>
-        <mat-form-field appearance="outline">
-          <mat-label>Adresse</mat-label>
-          <input matInput placeholder="Adresse" formControlName="address">
-        </mat-form-field>
-    </p>
-
-    <button mat-raised-button type="submit" [disabled]="!userForm.valid">Submit</button>
+<form [formGroup]="userForm">
+    <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>Nom</mat-label>
+              <input matInput formControlName="firstName">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>Prenom</mat-label>
+              <input matInput formControlName="lastName">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>Telephone</mat-label>
+              <span matTextPrefix>+212 &nbsp;</span>
+              <input type="tel" matInput formControlName="telephone" placeholder="+21260000000" type="number">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>Adresse</mat-label>
+              <textarea matInput formControlName="address" placeholder="Ex. rabat agdal rue 20 N 30"></textarea>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field>
+                <mat-label>Ville</mat-label>
+                <mat-select formControlName="ville">
+                  @for (ville of villes; track ville) {
+                    <mat-option [value]="ville.value">{{ville.viewValue}}</mat-option>
+                  }
+                </mat-select>
+              </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput formControlName="email"
+                       placeholder="Ex. pat@example.com">
+              </mat-form-field>
+          </td>
+        </tr>
+      </table>
+      <button mat-flat-button class="mat-button mat-warn-button" (click)="cancel()">Annuler</button>
+    <button mat-raised-button type="submit" [disabled]="!userForm.valid" (click)="submit()">Submit</button>
 </form>

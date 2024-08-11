@@ -16,4 +16,17 @@ export class UserService {
   getUsers(): Observable<any[]> {
     return this.http.get<any[]>('http://localhost:3000/users');
   }
+
+  getUser(id: number): Observable<any> {
+    return this.http.get<any>(`http://localhost:3000/users/${id}`);
+  }
+
+  DeleteUser(id: number): Observable<any[]> {
+    return this.http.delete<any[]>(`http://localhost:3000/users/${id}`);
+  }
+  
+  updateUser(id: number, data:any): Observable<any> {
+    return this.http.put<any>(`http://localhost:3000/users/${id}`, data);
+  }
+
 }

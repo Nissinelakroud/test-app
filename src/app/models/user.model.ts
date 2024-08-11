@@ -4,5 +4,7 @@ export class User {
     email!: string;
     address!: string;
     id!: number;
+    telephone!: string;  
+    ville!: string;
   }
   
