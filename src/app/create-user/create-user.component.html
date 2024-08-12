@@ -1,54 +1,59 @@
-<form [formGroup]="userForm">
-    <table class="example-full-width" cellspacing="0">
-        <tr>
-          <td>
-            <mat-form-field class="example-full-width">
-              <mat-label>Nom</mat-label>
-              <input matInput formControlName="firstName">
+<div class="flex justify-center items-center min-h-screen bg-gray-100">
+    <form [formGroup]="userForm" class="space-y-6 bg-white p-8 rounded shadow-md w-full max-w-xl">  
+        <h1 class="text-2xl font-semibold text-center mb-6">Formulaire Contact</h1>
+      <table class="w-full">
+        <tr class="space-y-6">
+          <td class="px-4 py-2">
+            <mat-form-field class="w-full">
+              <mat-label>firstname</mat-label>
+              <input matInput formControlName="firstName" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
             </mat-form-field>
           </td>
-          <td>
-            <mat-form-field class="example-full-width">
-              <mat-label>Prenom</mat-label>
-              <input matInput formControlName="lastName">
+          <td class="px-4 py-2">
+            <mat-form-field class="w-full">
+              <mat-label>lastname</mat-label>
+              <input matInput formControlName="lastName" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
             </mat-form-field>
           </td>
         </tr>
-        <tr>
-          <td>
-            <mat-form-field class="example-full-width">
-              <mat-label>Telephone</mat-label>
+        <tr class="space-y-6">
+          <td class="px-4 py-2">
+            <mat-form-field class="w-full">
+              <mat-label>Numberphone</mat-label>
               <span matTextPrefix>+212 &nbsp;</span>
-              <input type="tel" matInput formControlName="telephone" placeholder="+21260000000" type="number">
+              <input type="tel" matInput formControlName="telephone" placeholder="+21260000000" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
             </mat-form-field>
           </td>
-          <td>
-            <mat-form-field class="example-full-width">
-              <mat-label>Adresse</mat-label>
-              <textarea matInput formControlName="address" placeholder="Ex. rabat agdal rue 20 N 30"></textarea>
+          <td class="px-4 py-2">
+            <mat-form-field class="w-full">
+              <mat-label>Adress</mat-label>
+              <textarea matInput formControlName="address" placeholder="Ex. rabat agdal rue 20 N 30" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
             </mat-form-field>
           </td>
         </tr>
-        <tr>
-          <td>
-            <mat-form-field>
-                <mat-label>Ville</mat-label>
-                <mat-select formControlName="ville">
-                  @for (ville of villes; track ville) {
-                    <mat-option [value]="ville.value">{{ville.viewValue}}</mat-option>
-                  }
-                </mat-select>
-              </mat-form-field>
+        <tr class="space-y-6">
+          <td class="px-4 py-2">
+            <mat-form-field class="w-full">
+              <mat-label>Ville</mat-label>
+              <mat-select formControlName="ville">
+                @for (ville of villes; track ville) {
+                  <mat-option [value]="ville.value">{{ville.viewValue}}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
           </td>
-          <td>
-            <mat-form-field class="example-full-width">
-                <mat-label>Email</mat-label>
-                <input type="email" matInput formControlName="email"
-                       placeholder="Ex. pat@example.com">
-              </mat-form-field>
+          <td class="px-4 py-2">
+            <mat-form-field class="w-full">
+              <mat-label>Email</mat-label>
+              <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </mat-form-field>
           </td>
         </tr>
       </table>
-      <button mat-flat-button class="mat-button mat-warn-button" (click)="cancel()">Annuler</button>
-    <button mat-raised-button type="submit" [disabled]="!userForm.valid" (click)="submit()">Submit</button>
-</form>
+      <div class="flex justify-end space-x-4">
+        <button mat-flat-button class="px-4 py-2 text-white bg-red-500 rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400" (click)="cancel()">Annuler</button>
+        <button mat-raised-button type="submit" [disabled]="!userForm.valid" class="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400" (click)="submit()">Submit</button>
+      </div>
+    </form>
+  </div>
+  

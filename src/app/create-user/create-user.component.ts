@@ -55,10 +55,10 @@ export class CreateUserComponent implements OnInit {
       
       firstName: ['', [Validators.required]],
         lastName: ['', [Validators.required]],
-        address: ['', [Validators.required]],
+        address: [''],
         email: ['', [Validators.required]],
-        telephone: ['', [Validators.required]] , 
-        ville: ['', [Validators.required]]
+        telephone: [''] , 
+        ville: ['']
     });
 
     const userId = this.route.snapshot.params['id'];
