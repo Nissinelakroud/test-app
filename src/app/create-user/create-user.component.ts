@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 import { Router ,ActivatedRoute } from '@angular/router'; 
 import { FormBuilder} from '@angular/forms'; 
 import { User } from '../models/user.model';
-
+import {ErrorStateMatcher} from '@angular/material/core';
 
 @Component({
   selector: 'app-create-user',
@@ -55,8 +55,8 @@ export class CreateUserComponent implements OnInit {
       
       firstName: ['', [Validators.required]],
         lastName: ['', [Validators.required]],
-        address: [''],
-        email: ['', [Validators.required]],
+        address: [''], 
+        email: ['', [Validators.required, Validators.email]] ,
         telephone: [''] , 
         ville: ['']
     });
