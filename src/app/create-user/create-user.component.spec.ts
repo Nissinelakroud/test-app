@@ -29,13 +29,13 @@ describe('CreateUserComponent', () => {
         MatSelectModule,
         CommonModule,
         RouterTestingModule,
-        NoopAnimationsModule // Ajoutez NoopAnimationsModule ici
+        NoopAnimationsModule 
       ],
       providers: [
         {
           provide: UserService,
           useValue: { 
-            postUser: () => of({}), // Simulez le comportement du service
+            postUser: () => of({}), 
             updateUser: () => of({}),
             getUser: () => of({}),
           }
@@ -54,21 +54,23 @@ describe('CreateUserComponent', () => {
 
   it('should require firstName and email fields', () => {
     const firstNameControl = component.userForm.get('firstName');
+    const lastNameControl = component.userForm.get('lastName');
     const emailControl = component.userForm.get('email');
-
+    lastNameControl?.setValue('');
     firstNameControl?.setValue('');
     emailControl?.setValue('');
-
+    expect(lastNameControl?.valid).toBeFalsy();
     expect(firstNameControl?.valid).toBeFalsy();
-    expect(emailControl?.valid).toBeFalsy();
+    expect(emailControl?.valid).toBeFalsy(); 
 
-    firstNameControl?.setValue('John');
-    emailControl?.setValue('john@example.com');
-
+    lastNameControl?.setValue('nissrin');
+    firstNameControl?.setValue('nisso');
+    emailControl?.setValue('nisso@example.com');
+   expect(lastNameControl?.valid).toBeTruthy();
     expect(firstNameControl?.valid).toBeTruthy();
     expect(emailControl?.valid).toBeTruthy();
   });  
-  it('should call updateUser when updating an existing user', () => {
+  it('should call updateUser when updating  user', () => {
     const updateUserSpy = jest.spyOn(component['userService'], 'updateUser');
     component.userForm.setValue({
       firstName: 'Jane',
@@ -79,7 +81,7 @@ describe('CreateUserComponent', () => {
       ville: 'casablanca'
     });
   
-    // Simulez que l'utilisateur existe déjà avec un ID par exemple 1
+    
     component['route'].snapshot.params['id'] = 1;
   
     component.submit();

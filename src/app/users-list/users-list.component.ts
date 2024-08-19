@@ -66,7 +66,7 @@ export class UsersListComponent implements AfterViewInit {
       this.userapi.DeleteUser(id).subscribe({
         next: (response) => {
           console.log('User deleted successfully:', response);
-        
+          this.dataSource.data = this.dataSource.data.filter(user => user.id !== id);
         },
         error: (error) => {
           console.error('Error creating user:', error);
